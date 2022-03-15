@@ -1,0 +1,54 @@
+[
+  {
+    "parametreYili": "2022",
+    "asgariBrutMaas": 5004,
+    "damgaVergisiOrani": 0.00759,
+    "gelirVergisiIstisnasi": [
+      638.01,
+      638.01,
+      638.01,
+      638.01,
+      638.01,
+      638.01,
+      638.01,
+      739.37,
+      850.68,
+      850.68,
+      850.68,
+      850.68
+    ],
+    "sgkIsci": 0.14,
+    "sgkIssizlikIsci": 0.01,
+    "sgkIssizlikIsveren": 0.02,
+    "sgkIsveren": 0.205,
+    "sgkTavan": 37350,
+    "tesvik": 0.05,
+    "vergiDilimleri": [
+      {
+        "oran": 0.15,
+        "tavan": 32000,
+        "toplam": 0
+      },
+      {
+        "oran": 0.2,
+        "tavan": 70000,
+        "toplam": 4800
+      },
+      {
+        "oran": 0.27,
+        "tavan": 250000,
+        "toplam": 12400
+      },
+      {
+        "oran": 0.35,
+        "tavan": 880000,
+        "toplam": 61000
+      },
+      {
+        "oran": 0.4,
+        "tavan": 99999999,
+        "toplam": 281500
+      }
+    ]
+  }
+]

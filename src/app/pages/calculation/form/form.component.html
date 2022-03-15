@@ -1,0 +1,13 @@
+<meta-form [isDisabled]="isDisabledForms"></meta-form>
+<wage-form [isDisabled]="isDisabledForms"></wage-form>
+<div class="card p-fluid">
+  <div class="field">
+    <p-button
+      (click)="sendForm()"
+      [loading]="isLoading"
+      [disabled]="isDisabledButton"
+      label="Hesapla"
+      icon="pi pi-check"
+      iconPos="left"></p-button>
+  </div>
+</div>

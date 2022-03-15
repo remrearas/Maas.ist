@@ -1,0 +1,19 @@
+<div class="card p-fluid">
+    <form [formGroup]="form">
+      <div class="field">
+        <p-selectButton
+          [options]="calculation_types"
+          formControlName="type"
+          optionLabel="name"
+          optionValue="value"></p-selectButton>
+      </div>
+      <div class="field">
+        <label for="year">Yıl</label>
+        <p-dropdown
+          [options]="years"
+          formControlName="year"
+          id="year">
+        </p-dropdown>
+      </div>
+    </form>
+</div>

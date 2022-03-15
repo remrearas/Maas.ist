@@ -1,0 +1,106 @@
+<div class="card p-fluid">
+  <div class="field">
+    <label for="type">Hesaplama Türü</label>
+    <p-dropdown
+      [options]="wage_types"
+      [disabled]="isDisabled"
+      [(ngModel)]="selected"
+      (onChange)="onChange($event)"
+      optionLabel="name"
+      id="type">
+    </p-dropdown>
+  </div>
+  <ng-container
+    *ngIf="selected.value === 'monthly' && form">
+    <form [formGroup]="form">
+      <div class="field">
+        <label for="wage">Maaş Miktarı</label>
+        <input
+          pInputText
+          currencyMask
+          type="text"
+          formControlName="wage"
+          id="wage"
+          [options]="{ align: 'left' , prefix: '₺ ', thousands: '.', decimal: ',' }" >
+      </div>
+    </form>
+  </ng-container>
+  <ng-container
+    *ngIf="selected.value === 'hourly' && form">
+    <form [formGroup]="form">
+      <div class="field">
+        <label for="hourly_wage">Saatlik Maaş</label>
+        <input
+          pInputText
+          currencyMask
+          type="text"
+          formControlName="hourly_wage"
+          id="hourly_wage"
+          [options]="{ align: 'left' , prefix: '₺ ', thousands: '.', decimal: ',' }" >
+      </div>
+      <div class="field">
+        <label for="working_hour">Çalışma Saati</label>
+        <input
+          pInputText
+          type="number"
+          formControlName="working_hour"
+          id="working_hour">
+      </div>
+    </form>
+  </ng-container>
+  <ng-container
+    *ngIf="selected.value === 'monthly-extended' && form">
+    <form [formGroup]="form">
+      <ng-container formArrayName="wage_array">
+        <ng-container *ngFor="let _ of currentFormArray.controls; index as i ">
+          <div [formGroupName]="i">
+            <div class="field">
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">{{get_period_name(i)}}</span>
+                <input
+                  pInputText
+                  currencyMask
+                  type="text"
+                  [options]="{ align: 'left' , prefix: '₺ ', thousands: '.', decimal: ',' }"
+                  [formControl]="$any(currentFormArray.controls[i])">
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </form>
+  </ng-container>
+  <ng-container
+    *ngIf="selected.value === 'hourly-extended' && form">
+    <form [formGroup]="form">
+      <ng-container formArrayName="wage_array">
+        <ng-container *ngFor="let _ of currentFormArray.controls; index as i ">
+          <div [formGroupName]="i">
+            <div class="formgroup-inline">
+              <div class="field">
+                <div class="p-inputgroup">
+                  <span class="p-inputgroup-addon">{{get_period_name(i)}}</span>
+                  <input
+                    pInputText
+                    currencyMask
+                    type="text"
+                    [options]="{ align: 'left' , prefix: '₺ ', thousands: '.', decimal: ',' }"
+                    formControlName="wage">
+                </div>
+              </div>
+              <div class="field">
+                <div class="p-inputgroup">
+                  <span class="p-inputgroup-addon">Saat</span>
+                  <input
+                    pInputText
+                    type="number"
+                    formControlName="working_hour">
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </form>
+  </ng-container>
+</div>
