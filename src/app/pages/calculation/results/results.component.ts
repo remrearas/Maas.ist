@@ -97,7 +97,7 @@ export class ResultsComponent implements OnInit {
   newCalculation(): void {
     this.router.navigate(['calculation/form'])
       .then(
-        () => this.resultsService.removeActive()
+        () => {}
       );
   }
 
@@ -123,6 +123,10 @@ export class ResultsComponent implements OnInit {
     this.data = this.resultsService.getActiveResults();
     this.tableData = this.data.calculation_results.map(data => ({...data, donem: get_period_name(data.donem - 1)}));
     this.exportColumns = this.columns.map(col => ({title: col.field, dataKey: col.field}));
+  }
+
+  ngOnDestroy(): void {
+    this.resultsService.removeActive();
   }
 
 }
