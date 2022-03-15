@@ -18,4 +18,7 @@ export class FormsService {
   update(data: any) {
     this.store.update(data);
   }
+  reset(): void {
+    this.store.reset();
+  }
 }

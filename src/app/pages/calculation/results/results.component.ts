@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ResultsService} from "../../../includes/stores/results/results.service";
 import {CalculationResults, Results} from "../../../includes/stores/results/results.model";
 import {get_period_name} from "../../../includes/helpers/period";
 import {ExportHelper} from "../../../includes/helpers/export-helper";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-results',
@@ -21,7 +22,8 @@ export class ResultsComponent implements OnInit {
   detailReportDialogVisible = false;
   detailedReportData: any;
 
-  constructor(private resultsService: ResultsService) { }
+  constructor(private resultsService: ResultsService,
+              private router: Router) { }
 
   detailedReportsShow(rowData: any): void {
     this.detailReportDialogVisible = true;
@@ -82,10 +84,6 @@ export class ResultsComponent implements OnInit {
     };
   }
 
-  getWageTable() {
-    return Object.entries(this.detailedReportData.maas);
-  }
-
   detailedReportsHide(): void {
     this.detailedReportData = undefined;
     this.detailReportDialogVisible = false;
@@ -94,6 +92,13 @@ export class ResultsComponent implements OnInit {
   exportJson(): void {
     const exportHelper = new ExportHelper();
     exportHelper.exportJSON(this.data.calculation_results, this.data._id);
+  }
+
+  newCalculation(): void {
+    this.router.navigate(['calculation/form'])
+      .then(
+        () => this.resultsService.removeActive()
+      );
   }
 
   ngOnInit(): void {

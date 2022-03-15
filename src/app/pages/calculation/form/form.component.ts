@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormsService} from "../../../includes/stores/forms/forms.service";
 import {Subscription} from "rxjs";
 import {WageCalculationService} from "../../../includes/services/wage-calculation.service";
@@ -11,7 +11,8 @@ import {Router} from "@angular/router";
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent implements OnInit {
+export class FormComponent implements OnInit, OnDestroy {
+  calculationSubscription: Subscription;
   storeSubscription: Subscription;
   isDisabledForms: boolean = false;
   isDisabledButton: boolean = false;
@@ -27,7 +28,7 @@ export class FormComponent implements OnInit {
   sendForm() {
     this.isLoading = true;
     this.isDisabledForms = true;
-    this.wageCalculationService.calculate(this.currentForm)
+    this.calculationSubscription = this.wageCalculationService.calculate(this.currentForm)
       .subscribe(results => {
         const _id = uuidv4();
         this.resultsService.add({
@@ -41,7 +42,7 @@ export class FormComponent implements OnInit {
             this.isLoading = false;
             this.isDisabledForms = false;
           });
-      })
+      });
   }
 
   ngOnInit(): void {
@@ -55,5 +56,15 @@ export class FormComponent implements OnInit {
           };
         }
       )
+  }
+
+  ngOnDestroy() {
+    if(this.storeSubscription) {
+      this.storeSubscription.unsubscribe();
+    }
+    if(this.calculationSubscription) {
+      this.calculationSubscription.unsubscribe();
+    }
+    this.formsService.reset();
   }
 }
