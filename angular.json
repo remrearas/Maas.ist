@@ -63,12 +63,12 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none"
             },
             "development": {
               "buildOptimizer": true,
               "optimization": true,
-              "vendorChunk": true,
+              "vendorChunk": false,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
