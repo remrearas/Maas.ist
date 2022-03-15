@@ -18,7 +18,78 @@ export class ResultsComponent implements OnInit {
   columns: any[];
   exportColumns: any[];
 
+  detailReportDialogVisible = false;
+  detailedReportData: any;
+
   constructor(private resultsService: ResultsService) { }
+
+  detailedReportsShow(rowData: any): void {
+    this.detailReportDialogVisible = true;
+    this.detailedReportData = {
+      donem: rowData.donem,
+      maas: [
+        {
+          key: "Net Ücret",
+          value: rowData.net
+        },
+        {
+          key: "Brüt Ücret",
+          value: rowData.brut
+        }
+      ],
+      kesintiler: [
+        {
+          key: 'SGK Primi',
+          value: rowData.sgkIsci
+        },
+        {
+          key: 'İşsizlik Sigortası',
+          value: rowData.sgkIssizlikIsci
+        },
+        {
+          key: 'Gelir Vergisi',
+          value: rowData.gelirVergisi
+        },
+        {
+          key: 'Damga Vergisi',
+          value: rowData.damgaVergisi
+        },
+        {
+          key: 'Toplam Kesintiler',
+          value: rowData.sgkIsci + rowData.sgkIssizlikIsci + rowData.gelirVergisi + rowData.damgaVergisi
+        }
+      ],
+      vergiler: [
+        {
+          key: "Gelir Vergisi Matrahı",
+          value: rowData.gelirVergisiMatrahi
+        },
+        {
+          key: "Kümülatif Gelir Vergisi Matrahı",
+          value: rowData.kumulatifGelirVergisiMatrahi
+        }
+      ],
+      maliyet: [
+        {
+          key: "İşveren Primi",
+          value: rowData.sgkIsveren
+        },
+        {
+          key: "Maliyet",
+          value: rowData.maliyet
+        }
+      ]
+    };
+  }
+
+  getWageTable() {
+    return Object.entries(this.detailedReportData.maas);
+  }
+
+  detailedReportsHide(): void {
+    this.detailedReportData = undefined;
+    this.detailReportDialogVisible = false;
+  }
 
   exportJson(): void {
     const exportHelper = new ExportHelper();
@@ -47,7 +118,6 @@ export class ResultsComponent implements OnInit {
     this.data = this.resultsService.getActiveResults();
     this.tableData = this.data.calculation_results.map(data => ({...data, donem: get_period_name(data.donem - 1)}));
     this.exportColumns = this.columns.map(col => ({title: col.field, dataKey: col.field}));
-
   }
 
 }

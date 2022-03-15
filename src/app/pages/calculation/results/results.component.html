@@ -1,5 +1,5 @@
-<div class="card p-fluid">
-  <p-table #ct responsiveLayout="stack" [columns]="columns" [value]="tableData">
+<div class="card">
+  <p-table #ct responsiveLayout="stack" [resizableColumns]="true" [columns]="columns" [value]="tableData">
     <ng-template pTemplate="caption">
       <div class="flex">
         <button type="button" pButton pRipple icon="pi pi-file" (click)="ct.exportCSV()" class="p-button-success mr-2" pTooltip="CSV" tooltipPosition="bottom"></button>
@@ -8,20 +8,102 @@
     </ng-template>
     <ng-template pTemplate="header" let-columns>
       <tr>
+        <th>
+          #
+        </th>
         <th *ngFor="let col of columns">
           {{col.header}}
-        </th>
-        <th>
-          Detaylı Raporlar
         </th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-columns="columns">
       <tr [pSelectableRow]="rowData">
+        <td>
+          <button type="button" pButton pRipple icon="pi pi-chart-line" (click)="detailedReportsShow(rowData)" class="p-button mr-2" pTooltip="Detaylı Raporlar" tooltipPosition="bottom"></button>
+        </td>
         <td *ngFor="let col of columns">
-          {{rowData[col.field]}}
+          <span class="p-column-title">{{col['header']}}</span> {{rowData[col['field']]}}
         </td>
       </tr>
     </ng-template>
   </p-table>
 </div>
+<p-dialog
+  (onHide)="detailedReportsHide()"
+  [(visible)]="detailReportDialogVisible"
+  [maximizable]="true"
+  [breakpoints]="{'960px': '75vw', '640px': '100vw'}"
+  [style]="{width: '50vw'}">
+  <ng-container *ngIf="detailedReportData">
+    <h2>{{detailedReportData['donem']}} Bilgisi</h2>
+    <hr>
+    <div class="card p-fluid">
+      <h3>Maaş</h3>
+      <p-table [value]="detailedReportData['maas']" responsiveLayout="scroll">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Anahtar</th>
+            <th>Değer</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-data>
+          <tr>
+            <td>{{data['key']}}</td>
+            <td>{{data['value']}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+    <div class="card p-fluid">
+      <h3>Kesintiler</h3>
+      <p-table [value]="detailedReportData['kesintiler']" responsiveLayout="scroll">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Anahtar</th>
+            <th>Değer</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-data>
+          <tr>
+            <td>{{data['key']}}</td>
+            <td>{{data['value']}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+    <div class="card p-fluid">
+      <h3>Vergiler</h3>
+      <p-table [value]="detailedReportData['vergiler']" responsiveLayout="scroll">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Anahtar</th>
+            <th>Değer</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-data>
+          <tr>
+            <td>{{data['key']}}</td>
+            <td>{{data['value']}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+    <div class="card p-fluid">
+      <h3>Maliyet</h3>
+      <p-table [value]="detailedReportData['maliyet']" responsiveLayout="scroll">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Anahtar</th>
+            <th>Değer</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-data>
+          <tr>
+            <td>{{data['key']}}</td>
+            <td>{{data['value']}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </ng-container>
+</p-dialog>

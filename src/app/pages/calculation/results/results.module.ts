@@ -7,6 +7,8 @@ import {TableModule} from "primeng/table";
 import {ButtonModule} from "primeng/button";
 import {RippleModule} from "primeng/ripple";
 import {TooltipModule} from "primeng/tooltip";
+import {DialogModule} from "primeng/dialog";
+import {ChartModule} from "primeng/chart";
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import {TooltipModule} from "primeng/tooltip";
     TableModule,
     ButtonModule,
     RippleModule,
-    TooltipModule
+    TooltipModule,
+    DialogModule,
+    ChartModule
   ],
   providers: [
     ResultsGuard
