@@ -3,6 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'calculation/form',
+    pathMatch: 'full'
+  },
+  {
     path: 'calculation/form',
     loadChildren: () => import('./pages/calculation/form/form.module').then(m => m.FormModule)
   },
