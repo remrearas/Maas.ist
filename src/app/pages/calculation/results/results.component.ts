@@ -95,7 +95,7 @@ export class ResultsComponent implements OnInit {
   }
 
   newCalculation(): void {
-    this.router.navigate(['calculation/form'])
+    this.router.navigate([''])
       .then(
         () => {}
       );
