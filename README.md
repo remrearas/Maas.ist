@@ -1,5 +1,7 @@
 ﻿# Maas.ist Lightweight Angular Maaş Hesaplama Uygulaması
 
+<a href="https://www.buymeacoffee.com/remrearas" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+
 Maas.ist uygulaması, lightweight (hafif) ve işlevsel olmak için yaratılmıştır. Buna ek, sade ve anlaşılır kod bütünlüğüne sahip olması sizin kolay geliştirmeniz ve kendi yapınız üzerinde en kısa sürede yer kazandırmanız anlamına gelir.
 
 ***Neler yapabilir ?***
