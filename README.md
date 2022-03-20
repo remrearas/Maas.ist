@@ -1,27 +1,86 @@
-# Maas
+﻿# Maas.ist Lightweight Angular Maaş Hesaplama Uygulaması
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+Maas.ist uygulaması, lightweight (hafif) ve işlevsel olmak için yaratılmıştır. Buna ek, sade ve anlaşılır kod bütünlüğüne sahip olması sizin kolay geliştirmeniz ve kendi yapınız üzerinde en kısa sürede yer kazandırmanız anlamına gelir.
 
-## Development server
+***Neler yapabilir ?***
+ - *Türkiye Cumhuriyeti Sosyal Güvenlik Kurumu (SGK) tarafından belirlenen yıldan yıla değişen verilere göre Brütten Nete/Netten Brüte maaş hesaplaması*
+ - *Aylık/Saatlik ve Detaylı Aylık/Saatlik maaş girişi sayesinde detaylı hesaplama*
+ - *Raporları CSV/JSON formatında dışa aktarabilme*
+ - *Aylık detaylı raporları görüntüleme*  
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+***Sizin için avantajları;***
 
-## Code scaffolding
+ - *Geliştirici dostu ***sade&anlaşılır*** yapı*
+ - *Dinamik çalışan servisinize entegre etmeniz için gereken yapısal düzen*
+ - *Arka tarafta hesaplamak için çalışan herhangi bir servis olmaması ve bütün hesaplamaların kullanıcı tarayıcısı üzerinden yapılması*
+ - *Tam anlamıyla mobil uyumlu duyarlı (responsive) arayüz tasarımı*
+ - *Kullanıcının ihtiyaçları doğrultusunda tasarlanan üstün kullanıcı deneyimi*
+ - *Aşırı hafif olmasından dolayı Gtmetrix ve Google Pagespeed tarafından tam puan* 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+![enter image description here](https://raw.githubusercontent.com/remrearas/Maas.ist/dev/gh-assets/google-pagespeed.png)
 
-## Build
+![enter image description here](https://github.com/remrearas/Maas.ist/raw/dev/gh-assets/gtmetrix.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+# Demo
 
-## Running unit tests
+Uygulamayı canlı olarak Github Pages üzerinde barındırılan aşağıdaki bağlantıya tıklayarak deneyebilirsiniz.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+*https://remrearas.github.io/Maas.ist/*
 
-## Running end-to-end tests
+## Geliştirme Ortamınız Üzerine Kurulumu
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Bu uygulama bir Angular CLI uygulamasıdır. O yüzden kendi ortamınız üzerinde çalıştırmadan önce Angular CLI gereksinimlerini kontrol etmelisiniz. (*https://angular.io/guide/setup-local*)
 
-## Further help
+İlk önce Github deposunu kendi ortamınıza çekmelisiniz. Bunun için;
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    git clone https://github.com/remrearas/Maas.ist.git
+
+Sonrasında uygulamanın olduğu dizine gelip, gerekli npm paketlerini kurmalısınız. Bunun için;
+
+    npm install
+Bu aşamaya kadar başarıyla tamamladıysanız uygulamayı kendi yerel ortamınızda çalıştırabilirsiniz. Bunun için;
+
+    ng serve
+
+## Derleme Süreci ve Derleme Optimizasyonu
+
+Üretim (Production) aşamasına gelen uygulamanızı derlemek için aşağıdaki adımları uygulamasınız. Bu adımlar normal inşa adımlarına ek CSS optimizasyonu sürecini içerir. Kullanılmayan CSS'i kaldırmanız uygulamanızı hafifletir ve rahat bir kullanıcı deneyimi sağlar. 
+
+İlk önce uygulamamızı derliyoruz.
+
+    ng build
+veya
+
+    ng build --base-href=<URL>
+Sonrasında fazla CSS'i optimize etmek için aşağıdaki komutu çalıştırıyoruz.
+
+    npm run postbuild
+Başarıyla tamamlandıktan sonra kullanılmayan CSS'in ne kadar boyutta olduğunu komut konsolunuzda görüntüleyebilirsiniz.  Bu adımlara kadar başarıyla tamamladıysanız /dist dizininde oluşan uygulamanızı yüklemeye hazırsınız demektir.
+
+## Uygulama Hiyerarşik Düzeni ve Tanımlamaları
+
+Uygulamanın temel parçalarını inceleyecek olursak ilk önce hiyerarşik düzeni kontrol etmemiz gerekir. Bu düzen aşağıdaki gibidir;
+
+- [**includes**](https://github.com/remrearas/Maas.ist/tree/dev/src/app/includes)  
+  - [**guards**](https://github.com/remrearas/Maas.ist/tree/dev/src/app/includes/guards)  
+  - [**helpers**](https://github.com/remrearas/Maas.ist/tree/dev/src/app/includes/helpers)  
+  - [**resolvers**](https://github.com/remrearas/Maas.ist/tree/dev/src/app/includes/resolvers)  
+  - [**services**](https://github.com/remrearas/Maas.ist/tree/dev/src/app/includes/services)  
+  - [**stores**](https://github.com/remrearas/Maas.ist/tree/dev/src/app/includes/stores)  
+      - [**forms**](https://github.com/remrearas/Maas.ist/tree/dev/src/app/includes/stores/forms)  
+      - [**parameters**](https://github.com/remrearas/Maas.ist/tree/dev/src/app/includes/stores/parameters)  
+      - [**results**](https://github.com/remrearas/Maas.ist/tree/dev/src/app/includes/stores/results)  
+- [**pages**](https://github.com/remrearas/Maas.ist/tree/dev/src/app/pages)  
+  - [**calculation**](https://github.com/remrearas/Maas.ist/tree/dev/src/app/pages/calculation)  
+      - [**form**](https://github.com/remrearas/Maas.ist/tree/dev/src/app/pages/calculation/form)  
+          - [**components**](https://github.com/remrearas/Maas.ist/tree/dev/src/app/pages/calculation/form/components)  
+              - [**meta-form**](https://github.com/remrearas/Maas.ist/tree/dev/src/app/pages/calculation/form/components/meta-form)  
+              - [**wage-form**](https://github.com/remrearas/Maas.ist/tree/dev/src/app/pages/calculation/form/components/wage-form)  
+      - [**results**](https://github.com/remrearas/Maas.ist/tree/dev/src/app/pages/calculation/results)
+
+****includes*** içerisinde bileşenlerin çalıştırdığı servisleri ve depoları (store) içerir.* 
+****pages*** bileşenlerin sayfalarını ve bileşen formlarını içerir.*
+
+
+
+
