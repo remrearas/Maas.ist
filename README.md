@@ -1,4 +1,5 @@
-﻿# Maas.ist Lightweight Angular Maaş Hesaplama Uygulaması
+
+# Maas.ist Lightweight Angular Maaş Hesaplama Uygulaması
 
 <a href="https://www.buymeacoffee.com/remrearas" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 
@@ -82,6 +83,8 @@ Uygulamanın temel parçalarını inceleyecek olursak ilk önce hiyerarşik düz
 
 ****includes*** içerisinde bileşenlerin çalıştırdığı servisleri ve depoları (store) içerir.*
 ****pages*** bileşenlerin sayfalarını ve bileşen formlarını içerir.*
+*Uygulamanın beyni olan maaş hesaplama sınıfına [tıklayarak erişebilirsiniz](https://github.com/remrearas/Maas.ist/blob/dev/src/app/includes/services/wage-calculator.ts).*
+*Hesaplama parametrelerine bu bağlantıya [tıklayarak erişebilirsiniz.](https://github.com/remrearas/Maas.ist/blob/dev/src/assets/parameters.json)*
 
 ## Atıflar/Kaynaklar
 [Dylan v.d Merwe](https://dev.to/dylanvdmerwe) tarafından yazılan [**Reduce Angular style size (using PurgeCSS to remove unused styles)**](https://dev.to/dylanvdmerwe/reduce-angular-style-size-using-purgecss-to-remove-unused-styles-3b2k) makalesinden [postbuild.js](https://github.com/remrearas/Maas.ist/blob/dev/postbuild.js) implement edilmiştir.
