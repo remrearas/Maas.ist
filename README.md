@@ -46,7 +46,7 @@ Bu aşamaya kadar başarıyla tamamladıysanız uygulamayı kendi yerel ortamın
 
 ## Derleme Süreci ve Derleme Optimizasyonu
 
-Üretim (Production) aşamasına gelen uygulamanızı derlemek için aşağıdaki adımları uygulamasınız. Bu adımlar normal inşa adımlarına ek CSS optimizasyonu sürecini içerir. Kullanılmayan CSS'i kaldırmanız uygulamanızı hafifletir ve rahat bir kullanıcı deneyimi sağlar.
+Üretim (Production) aşamasına gelen uygulamanızı derlemek için aşağıdaki adımları uygulamalısınız. Bu adımlar normal inşa adımlarına ek CSS optimizasyonu sürecini içerir. Kullanılmayan CSS'i kaldırmanız uygulamanızı hafifletir ve rahat bir kullanıcı deneyimi sağlar.
 
 İlk önce uygulamamızı derliyoruz.
 
